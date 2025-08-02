@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আমার সংবাদ - অবিচল সত্যের খোদা</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        brand: "#e23e38",
+                        brandDark: "#c32d27",
+                        darkbg: "#0f172a",
+                        darkcard: "#1e293b",
+                        accent: "#f59e0b",
+                        accentDark: "#d97706",
+                    },
+                    fontFamily: {
+                        hind: ["Hind Siliguri", "sans-serif"],
+                    },
+                    animation: {
+                        fadeIn: "fadeIn 0.5s ease-in-out",
+                        slideDown: "slideDown 0.3s ease-out",
+                        slideUp: "slideUp 0.3s ease-out",
+                        bounce: "bounce 1s infinite",
+                        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                        glow: "glow 2s ease-in-out infinite alternate",
+                        float: "float 3s ease-in-out infinite",
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            "0%": { opacity: "0", transform: "translateY(10px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        },
+                        slideDown: {
+                            "0%": { opacity: "0", transform: "translateY(-10px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        },
+                        slideUp: {
+                            "0%": { opacity: "0", transform: "translateY(10px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        },
+                        glow: {
+                            "0%": {
+                                boxShadow:
+                                    "0 0 5px #e23e38, 0 0 10px #e23e38, 0 0 15px #e23e38",
+                            },
+                            "100%": {
+                                boxShadow:
+                                    "0 0 10px #e23e38, 0 0 20px #e23e38, 0 0 30px #e23e38",
+                            },
+                        },
+                        float: {
+                            "0%, 100%": { transform: "translateY(0px)" },
+                            "50%": { transform: "translateY(-10px)" },
+                        },
+                    },
+                    backdropBlur: {
+                        xs: "2px",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: "Hind Siliguri", sans-serif;
+        }
+
+        /* Enhanced Glassmorphism Effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Category Tags */
+        .category-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #e23e38, #f59e0b);
+            color: white;
+            box-shadow: 0 2px 8px rgba(226, 62, 56, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .category-tag:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(226, 62, 56, 0.4);
+        }
+
+        /* Enhanced News Cards */
+        .news-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transition: left 0.5s ease;
+        }
+
+        .news-card:hover::before {
+            left: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .news-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-card:hover .news-title {
+            color: #e23e38;
+        }
+
+        /* Enhanced Navigation */
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e23e38, #f59e0b);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Enhancements */
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 62, 56, 0.1);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .dark .dropdown-menu {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chevron-rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        /* Subnav enhancements */
+        .subnav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .subnav-item:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #e23e38, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .subnav-item:hover:after {
+            width: 100%;
+        }
+
+        /* Enhanced carousel */
+        .carousel-slide {
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .carousel-slide::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        /* Enhanced buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #e23e38, #f59e0b);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(226, 62, 56, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(226, 62, 56, 0.4);
+        }
+
+        /* Breaking News Ticker */
+        .breaking-news {
+            background: linear-gradient(45deg, #5d2fb4, #9f0bf5);
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .breaking-text {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        .breaking-text:hover {
+            animation-play-state: paused;
+        }
+
+        .breaking-text li {
+            position: relative;
+        }
+
+        .breaking-text li a:hover {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-color: #eeeeee;
+        }
+
+        .breaking-text li::before {
+            content: "•";
+            position: absolute;
+            left: -1rem;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Enhanced weather section */
+        .weather-icon {
+            filter: drop-shadow(0 0 8px rgba(100, 100, 255, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Section titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #e23e38, #f59e0b);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        /* Video thumbnails */
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-thumbnail::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover::after {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(226, 62, 56, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .play-icon:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(226, 62, 56, 1);
+        }
+
+        /* Pagination */
+        .news-pagination li a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .news-pagination li.active a {
+            background: linear-gradient(135deg, #e23e38, #f59e0b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(226, 62, 56, 0.3);
+        }
+
+        .news-pagination li:not(.active) a:hover {
+            background: #f1f1f1;
+            color: #e23e38;
+            transform: translateY(-2px);
+        }
+
+        .dark .news-pagination li:not(.active) a:hover {
+            background: #334155;
+        }
+
+        /* Mobile menu enhancements */
+        .mobile-menu-slide {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu-slide.active {
+            transform: translateX(0);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e23e38, #f54d0b);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(100px);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(226, 62, 56, 0.3);
+        }
+
+        .scroll-to-top.visible {
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(226, 62, 56, 0.4);
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            display: block;
+            position: relative;
+            margin: 0 auto;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #e23e38;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Enhanced tabs */
+        .tab-active {
+            position: relative;
+            background: linear-gradient(135deg, #e23e38, #f59e0b);
+            color: white !important;
+            border-radius: 25px;
+            padding: 8px 16px;
+            margin: 0 4px;
+        }
+
+        .tab-inactive {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 8px 16px;
+            margin: 0 4px;
+        }
+
+        .tab-inactive:hover {
+            background: rgba(226, 62, 56, 0.1);
+            color: #e23e38 !important;
+        }
+
+        /* Social media enhancements */
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #e23e38, #f59e0b);
+            color: white;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(226, 62, 56, 0.3);
+        }
+
+        /* Live indicator */
+        .live-indicator {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .live-indicator::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-darkbg dark:text-gray-200 font-hind">
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news py-2">
+        <div class="container mx-auto px-4 flex items-center">
+            <span class="live-indicator font-bold text-sm mr-4">লাইভ</span>
+            <div class="flex-1 overflow-hidden">
+                <ul class="breaking-text" onfocus="javascript.stop()">
+                    <li><a href="#">ঢাকায় নতুন মেট্রোরেল স্টেশন উদ্বোধন</a></li>
+                    <li>
+                        <a href="#">বাংলাদেশ বনাম নিউজিল্যান্ড সিরিজে তিন নতুন খেলোয়াড়</a>
+                    </li>
+                    <li><a href="#">শেয়ারবাজারে রেকর্ড বৃদ্ধি</a></li>
+                    <li><a href="#">ঈদের ছুটির তালিকা প্রকাশ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logo and Social Media Section -->
+    <div class="py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-darkcard">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-brand to-accent bg-clip-text text-transparent">
+                    আমার সংবাদ
+                </h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    অবিচল সত্যের খোদা
+                </p>
+            </div>
+
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav
+        class="bg-white dark:bg-darkcard shadow-lg py-3 sticky top-0 z-40 border-b border-gray-200 dark:border-gray-700 backdrop-blur-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div id="mobileMenuBtn" class="md:hidden block text-2xl cursor-pointer hover:text-brand transition-colors">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="nav-item font-semibold text-lg hover:text-brand transition-colors">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <div class="dropdown relative">
+                    <a href="#"
+                        class="nav-item font-semibold text-lg hover:text-brand flex items-center transition-colors">
+                        জাতীয়
+                        <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300"></i>
+                    </a>
+                    <div class="dropdown-menu absolute hidden shadow-xl rounded-lg mt-2 py-2 w-48 z-50">
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">রাজধানী</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">জেলা</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">আইন-আদালত</a>
+                    </div>
+                </div>
+
+                <div class="dropdown relative">
+                    <a href="#"
+                        class="nav-item font-semibold text-lg hover:text-brand flex items-center transition-colors">
+                        রাজনীতি
+                        <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300"></i>
+                    </a>
+                    <div class="dropdown-menu absolute hidden shadow-xl rounded-lg mt-2 py-2 w-48 z-50">
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">আওয়ামী
+                            লীগ</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">বিএনপি</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">জাতীয়
+                            পার্টি</a>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-item font-semibold text-lg hover:text-brand transition-colors">খেলা</a>
+                <a href="#" class="nav-item font-semibold text-lg hover:text-brand transition-colors">বাণিজ্য</a>
+
+                <div class="dropdown relative">
+                    <a href="#"
+                        class="nav-item font-semibold text-lg hover:text-brand flex items-center transition-colors">
+                        বিনোদন
+                        <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300"></i>
+                    </a>
+                    <div class="dropdown-menu absolute hidden shadow-xl rounded-lg mt-2 py-2 w-48 z-50">
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">সিনেমা</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">টেলিভিশন</a>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">সংগীত</a>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-item font-semibold text-lg hover:text-brand transition-colors">চাকরি</a>
+                <a href="#" class="nav-item font-semibold text-lg hover:text-brand transition-colors">দেশজুড়ে</a>
+                <a href="#" class="nav-item font-semibold text-lg hover:text-brand transition-colors">আন্তর্জাতিক</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <input type="text" placeholder="খুঁজুন..."
+                        class="pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 dark:bg-darkbg text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent w-40 md:w-64 transition-all" />
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                </div>
+
+                <button id="themeToggle"
+                    class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all flex items-center justify-center hover:scale-110"
+                    title="থিম পরিবর্তন করুন">
+                    <i class="fas fa-sun text-yellow-400 dark:hidden"></i>
+                    <i class="fas fa-moon text-blue-200 hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu"
+            class="hidden md:hidden bg-white dark:bg-darkbg py-4 shadow-lg absolute top-full left-0 right-0 z-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col space-y-3">
+                    <div class="dropdown-mobile">
+                        <a href="#"
+                            class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                            জাতীয়
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </a>
+                        <div class="dropdown-mobile-menu hidden pl-4 mt-2 space-y-2">
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">রাজধানী</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">জেলা</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">আইন-আদালত</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-mobile">
+                        <a href="#"
+                            class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                            রাজনীতি
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </a>
+                        <div class="dropdown-mobile-menu hidden pl-4 mt-2 space-y-2">
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">আওয়ামী লীগ</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">বিএনপি</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">জাতীয় পার্টি</a>
+                        </div>
+                    </div>
+
+                    <a href="#"
+                        class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 hover:text-brand transition-colors">খেলা</a>
+                    <a href="#"
+                        class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 hover:text-brand transition-colors">বাণিজ্য</a>
+
+                    <div class="dropdown-mobile">
+                        <a href="#"
+                            class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                            বিনোদন
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </a>
+                        <div class="dropdown-mobile-menu hidden pl-4 mt-2 space-y-2">
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">সিনেমা</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">টেলিভিশন</a>
+                            <a href="#" class="block py-2 text-sm hover:text-brand transition-colors">সংগীত</a>
+                        </div>
+                    </div>
+
+                    <a href="#"
+                        class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 hover:text-brand transition-colors">চাকরি</a>
+                    <a href="#"
+                        class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 hover:text-brand transition-colors">দেশজুড়ে</a>
+                    <a href="#"
+                        class="font-medium py-2 border-b border-gray-100 dark:border-gray-700 hover:text-brand transition-colors">আন্তর্জাতিক</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sub Navigation -->
+    <div class="bg-gray-50 dark:bg-gray-800 py-3 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-8 justify-center">
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">সর্বশেষ</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">সর্বাধিক
+                    পঠিত</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">জনপ্রিয়</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">মতামত</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">ফিচার</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">চিত্রজাল</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">ভিডিও</a>
+                <a href="#"
+                    class="subnav-item relative font-medium text-sm pb-1 hover:text-brand transition-colors">সাক্ষাৎকার</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Left Column (Main Content) -->
+            <div class="w-full lg:w-8/12">
+
+                <!-- Hero Carousel -->
+                <div class="mb-8 animate-fadeIn">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="inline-flex">
+                            <span class="category-tag">শীর্ষ খবর</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button
+                                class="carousel-prev w-10 h-10 rounded-full glass hover:bg-brand hover:text-white flex items-center justify-center transition-all hover:scale-110">
+                                <i class="fas fa-chevron-left text-sm"></i>
+                            </button>
+                            <button
+                                class="carousel-next w-10 h-10 rounded-full glass hover:bg-brand hover:text-white flex items-center justify-center transition-all hover:scale-110">
+                                <i class="fas fa-chevron-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+
+
+                        <div class="carousel-container h-96 flex transition-transform duration-500 ease-in-out">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide min-w-full bg-cover bg-center rounded-2xl relative" style="
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.7)
+        ),
+        url('https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Flfk9bmy7%2FIEB.jpg');
+    ">
+                                <div class="absolute bottom-8 left-8 right-8 z-10">
+                                    <span class="category-tag mb-3">রাজনীতি</span>
+                                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">
+                                        মুজিববর্ষে ভিন্ন জেরা, নতুন বেসরকারি বিশ্ববিদ্যালয় নীতিমালা নিয়ে প্রশ্ন
+                                    </h2>
+                                    <p class="text-gray-100">
+                                        জাতীয় সংসদে আজ সরকার বেসরকারি বিশ্ববিদ্যালয় নীতিমালা সংশোধনী বিল উত্থাপন করেছে
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide min-w-full bg-cover bg-center rounded-2xl relative" style="
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.7)
+        ),
+        url('https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fuqel13q1%2FScreenshot-2025-08-02-173829.jpg');
+    ">
+                                <div class="absolute bottom-8 left-8 right-8 z-10">
+                                    <span class="category-tag mb-3">অর্থনীতি</span>
+                                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">
+                                        বৈদেশিক মুদ্রার রিজার্ভ বৃদ্ধিতে নতুন পরিকল্পনা
+                                    </h2>
+                                    <p class="text-gray-100">
+                                        তিন মাসের মধ্যে দ্বিতীয়বারের মতো সম্পূরক বিদেশ থেকে টাকা আনার সিদ্ধান্ত
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide min-w-full bg-cover bg-center rounded-2xl relative" style="
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.7)
+        ),
+        url('https://media.prothomalo.com/prothomalo-bangla%2F2025-05-09%2F3fxcoxg1%2F09.jpg');
+    ">
+                                <div class="absolute bottom-8 left-8 right-8 z-10">
+                                    <span class="category-tag mb-3">আবহাওয়া</span>
+                                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">
+                                        আগামী সপ্তাহে দেশের বিভিন্ন অঞ্চলে ভারী বৃষ্টির সম্ভাবনা
+                                    </h2>
+                                    <p class="text-gray-100">
+                                        আবহাওয়া অধিদপ্তরের পূর্বাভাসে বলা হয়েছে, বঙ্গোপসাগরে সৃষ্ট নিম্নচাপের প্রভাবে
+                                        বৃষ্টি হতে পারে
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="carousel-slide min-w-full bg-cover bg-center rounded-2xl relative" style="
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.7)
+        ),
+        url('https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2F3yvi1dth%2FBAGERHATDH069420250802BAGERHAT-PIC-2-8-2025.JPG.JPG');
+    ">
+                                <div class="absolute bottom-8 left-8 right-8 z-10">
+                                    <span class="category-tag mb-3">প্রযুক্তি</span>
+                                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">
+                                        দেশে তৈরি হচ্ছে নিজস্ব কৃত্রিম বুদ্ধিমত্তা মডেল
+                                    </h2>
+                                    <p class="text-gray-100">
+                                        প্রযুক্তি মন্ত্রণালয়ের ঘোষণা: নতুন জেনারেটিভ এআই প্রকল্পের কাজ শুরু হয়েছে
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+                            <button
+                                class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-50 transition-all hover:opacity-100"></button>
+                            <button
+                                class="carousel-indicator w-3 h-3 rounded-full bg-white transition-all hover:opacity-100"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main News Section -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white section-title">
+                            জাতীয়
+                        </h2>
+                        <a href="#" class="text-sm text-brand hover:underline transition-colors">সব খবর দেখুন</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- News Card 1 -->
+                        <a href="#"
+                            class="news-card bg-white dark:bg-darkcard rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                            <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="News" class="w-full h-48 object-cover" />
+                            <div class="p-5">
+                                <span class="category-tag mb-3">রাজধানী</span>
+                                <h3 class="news-title font-bold text-lg mb-3 transition-colors">
+                                    ঢাকায় নতুন বাস রুট চালুর সিদ্ধান্ত
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                    রাজধানীতে যানজট কমাতে নতুন ৫টি বাস রুট চালু করতে যাচ্ছে
+                                    পরিবহন কর্তৃপক্ষ
+                                </p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>১০ মিনিট আগে</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- News Card 2 -->
+                        <a href="#"
+                            class="news-card bg-white dark:bg-darkcard rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                            <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="News" class="w-full h-48 object-cover" />
+                            <div class="p-5">
+                                <span class="category-tag mb-3">শিক্ষা</span>
+                                <h3 class="news-title font-bold text-lg mb-3 transition-colors">
+                                    এইচএসসি পরীক্ষার ফল প্রকাশ কাল
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                    মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড আগামীকাল সকাল ১০টায়
+                                    ফলাফল প্রকাশ করবে
+                                </p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>২৫ মিনিট আগে</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- News Card 3 -->
+                        <a href="#"
+                            class="news-card bg-white dark:bg-darkcard rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                            <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="News" class="w-full h-48 object-cover" />
+                            <div class="p-5">
+                                <span class="category-tag mb-3">স্বাস্থ্য</span>
+                                <h3 class="news-title font-bold text-lg mb-3 transition-colors">
+                                    বিনামূল্যে কিডনি পরীক্ষার কর্মসূচি শুরু
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                    রাজধানীর শ্যামলীতে বিনামূল্যে কিডনি পরীক্ষার বিশেষ কর্মসূচি
+                                    শুরু হয়েছে
+                                </p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>১ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- News Card 4 -->
+                        <a href="#"
+                            class="news-card bg-white dark:bg-darkcard rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                            <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fomdojs9u%2FScreenshot-2025-08-02-164631.jpg"
+                                alt="News" class="w-full h-48 object-cover" />
+                            <div class="p-5">
+                                <span class="category-tag mb-3">সংস্কৃতি</span>
+                                <h3 class="news-title font-bold text-lg mb-3 transition-colors">
+                                    ঢাকা লিট ফেস্টের জন্য প্রস্তুতি শুরু
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                    নভেম্বরে অনুষ্ঠিতব্য ঢাকা লিটারেচার ফেস্টের প্রস্তুতি শুরু
+                                    হয়েছে
+                                </p>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>২ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="mt-8 flex justify-center">
+                        <ul class="news-pagination inline-flex space-x-2">
+                            <li class="active"><a href="#" class="text-white">1</a></li>
+                            <li>
+                                <a href="#" class="text-gray-700 dark:text-gray-300">2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-700 dark:text-gray-300">3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-700 dark:text-gray-300">4</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-gray-700 dark:text-gray-300"><i
+                                        class="fas fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Enhanced Tabs Section -->
+                <div class="mb-8">
+                    <div class="flex bg-gray-100 dark:bg-gray-800 rounded-full p-1 mb-6 w-fit mx-auto">
+                        <button class="tab-active font-medium py-2 px-6 rounded-full transition-all">
+                            পঠিত
+                        </button>
+                        <button class="tab-inactive font-medium py-2 px-6 rounded-full transition-all">
+                            আলোচিত
+                        </button>
+                        <button class="tab-inactive font-medium py-2 px-6 rounded-full transition-all">
+                            সুখবর
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="tabContent">
+                        <!-- Tab content will be dynamically loaded here -->
+                    </div>
+                </div>
+
+
+
+                <!-- Sports Section -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white section-title">
+                            খেলাধুলা
+                        </h2>
+                        <a href="#" class="text-sm text-brand hover:underline transition-colors">সব খবর দেখুন</a>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <!-- Sports Carousel -->
+                        <div class="w-full lg:w-7/12">
+                            <div class="relative overflow-hidden rounded-xl h-80 shadow-xl">
+                                <div
+                                    class="sports-carousel-container h-full flex transition-transform duration-500 ease-in-out">
+                                    <!-- Slide 1 -->
+                                    <div class="sports-carousel-slide min-w-full bg-cover bg-center rounded-xl relative"
+                                        style="
+                        background-image: linear-gradient(
+                            rgba(0, 0, 0, 0.4),
+                            rgba(0, 0, 0, 0.7)
+                          ),
+                          url('https://images.unsplash.com/photo-1552667466-07770ae110d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+                      ">
+                                        <div class="absolute bottom-8 left-8 right-8 z-10">
+                                            <span class="category-tag mb-3">ক্রিকেট</span>
+                                            <h2 class="text-2xl font-bold text-white leading-tight mb-3">
+                                                বাংলাদেশ বনাম নিউজিল্যান্ড সিরিজে নতুন মুখ
+                                            </h2>
+                                            <p class="text-gray-100">
+                                                টেস্ট সিরিজের জন্য বাংলাদেশ দলে তিন নতুন খেলোয়াড়ের
+                                                অন্তর্ভুক্তি
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="sports-carousel-slide min-w-full bg-cover bg-center rounded-xl relative"
+                                        style="
+                        background-image: linear-gradient(
+                            rgba(0, 0, 0, 0.4),
+                            rgba(0, 0, 0, 0.7)
+                          ),
+                          url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+                      ">
+                                        <div class="absolute bottom-8 left-8 right-8 z-10">
+                                            <span class="category-tag mb-3">ফুটবল</span>
+                                            <h2 class="text-2xl font-bold text-white leading-tight mb-3">
+                                                বঙ্গবন্ধু গোল্ড কাপের প্রস্তুতি শুরু
+                                            </h2>
+                                            <p class="text-gray-100">
+                                                জাতীয় দল আগামী মাসে শুরু হতে যাওয়া টুর্নামেন্টের
+                                                জন্য ক্যাম্প শুরু করেছে
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+                                    <button
+                                        class="sports-carousel-indicator w-3 h-3 rounded-full bg-white opacity-50 transition-all"></button>
+                                    <button
+                                        class="sports-carousel-indicator w-3 h-3 rounded-full bg-white transition-all"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sports News List -->
+                        <div class="w-full lg:w-5/12">
+                            <div class="space-y-4">
+                                <div
+                                    class="flex border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-3 transition-all">
+                                    <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fg7s3o7j8%2F002.jpg"
+                                        alt="Sports" class="w-20 h-20 object-cover rounded-lg" />
+                                    <div class="ml-3">
+                                        <span class="category-tag text-xs mb-2">ফুটবল</span>
+                                        <h3
+                                            class="font-semibold mt-2 hover:text-brand transition-colors cursor-pointer">
+                                            আগামী সপ্তাহে শুরু হচ্ছে প্রিমিয়ার লিগ
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-3 transition-all">
+                                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                        alt="Sports" class="w-20 h-20 object-cover rounded-lg" />
+                                    <div class="ml-3">
+                                        <span class="category-tag text-xs mb-2">ক্রিকেট</span>
+                                        <h3
+                                            class="font-semibold mt-2 hover:text-brand transition-colors cursor-pointer">
+                                            বাংলাদেশের নতুন কোচ ঘোষণা আজ
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <div class="flex hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-3 transition-all">
+                                    <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                        alt="Sports" class="w-20 h-20 object-cover rounded-lg" />
+                                    <div class="ml-3">
+                                        <span class="category-tag text-xs mb-2">হকি</span>
+                                        <h3
+                                            class="font-semibold mt-2 hover:text-brand transition-colors cursor-pointer">
+                                            এশিয়া কাপ হকির জন্য দল ঘোষণা
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Section -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white section-title">
+                            বাণিজ্য
+                        </h2>
+                        <a href="#" class="text-sm text-brand hover:underline transition-colors">সব খবর দেখুন</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <a href="#" class="glass rounded-2xl p-6 hover:shadow-xl transition-all">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-100 dark:bg-green-900 rounded-xl p-4 mr-4">
+                                    <i class="fas fa-chart-line text-3xl text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl hover:text-brand transition-colors">শেয়ারবাজার আজকের
+                                        অবস্থা</h3>
+                                    <p class="text-sm text-gray-500">
+                                        ডিএসই সূচক ৬০ পয়েন্ট বেড়েছে
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                বিনিয়োগকারীদের আস্থা ফিরে আসায় শেয়ারবাজারে ইতিবাচক প্রবণতা
+                                দেখা যাচ্ছে। ব্যাংক ও ফিন্যান্সিয়াল প্রতিষ্ঠানগুলোর শেয়ারে
+                                চাহিদা বাড়ছে।
+                            </p>
+                        </a>
+
+                        <a href="#" class="glass rounded-2xl p-6 hover:shadow-xl transition-all">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900 rounded-xl p-4 mr-4">
+                                    <i class="fas fa-dollar-sign text-3xl text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl hover:text-brand transition-colors">ডলারের মূল্যবৃদ্ধি
+                                    </h3>
+                                    <p class="text-sm text-gray-500">
+                                        ব্যাংকগুলোতে ডলারের দাম বেড়েছে
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                আমদানি চাহিদা বাড়ার ফলে ব্যাংকগুলোতে ডলারের দাম বেড়ে প্রতি
+                                ডলার ১১০ টাকায় পৌঁছেছে, যা গত এক মাসের মধ্যে সর্বোচ্চ।
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- YouTube Video Section -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white section-title">
+                            ভিডিও গ্যালারি
+                        </h2>
+                        <a href="#" class="text-sm text-brand hover:underline transition-colors">সব ভিডিও দেখুন</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="video-thumbnail relative rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2023-06%2F69a2a499-7db2-4127-8c4d-7070c8ca7acf%2F6o6om7is_david_warner_stuart_broad_afp_625x300_28_July_20.jpg"
+                                    alt="Video" class="w-full h-48 object-cover" />
+                                <div class="play-icon">
+                                    <i class="fas fa-play text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold mt-4 text-lg group-hover:text-brand transition-colors">
+                                ঢাকায় নতুন মেট্রোরেল পরীক্ষামূলক চলাচল
+                            </h3>
+                        </div>
+
+                        <div class="group cursor-pointer">
+                            <div
+                                class="video-thumbnail relative rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2F2pkilkkc%2Fweb.jpg"
+                                    alt="Video" class="w-full h-48 object-cover" />
+                                <div class="play-icon">
+                                    <i class="fas fa-play text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold mt-4 text-lg group-hover:text-brand transition-colors">
+                                পদ্মা সেতুতে রেল যোগাযোগ চালুর প্রস্তুতি
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Picture View Section -->
+
+
+                <!-- Live Blog Section -->
+                <div class="mb-8">
+                    <div class="glass rounded-2xl p-6 border-l-4 border-red-500">
+                        <div class="flex items-center mb-4">
+                            <span class="live-indicator font-bold text-lg mr-4">লাইভ ব্লগ</span>
+                            <h2 class="text-xl font-bold">আজকের গুরুত্বপূর্ণ ঘটনাসমূহ</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="border-l-2 border-brand pl-4 py-2">
+                                <p class="text-sm text-gray-500 mb-1">১২:৩০ PM</p>
+                                <p class="font-medium">
+                                    প্রধানমন্ত্রী নতুন উন্নয়ন প্রকল্পের উদ্বোধন করেছেন
+                                </p>
+                            </div>
+                            <div class="border-l-2 border-gray-300 pl-4 py-2">
+                                <p class="text-sm text-gray-500 mb-1">১১:১৫ AM</p>
+                                <p class="font-medium">
+                                    শেয়ারবাজারে ইতিবাচক সূচক, ৬০ পয়েন্ট বৃদ্ধি
+                                </p>
+                            </div>
+                            <div class="border-l-2 border-gray-300 pl-4 py-2">
+                                <p class="text-sm text-gray-500 mb-1">১০:০০ AM</p>
+                                <p class="font-medium">
+                                    ঢাকায় নতুন মেট্রোরেল স্টেশনের কাজ শুরু
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (Sidebar) -->
+            <div class="w-full lg:w-4/12">
+                <!-- Latest News -->
+                <div class="glass rounded-2xl shadow-lg p-6 mb-6 top-24">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        সর্বশেষ
+                    </h2>
+                    <div class="space-y-4">
+                        <div
+                            class="flex pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <div class="rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fdlozwk50%2FNCP.jpeg"
+                                    alt="News Image" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    দেশে করোনার নতুন ধরন শনাক্ত, স্বাস্থ্য মন্ত্রণালয়ের সতর্কতা
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>১৫ মিনিট আগে</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <div class="rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fota2wlsd%2FWhatsApp-Image-2025-08-02-at-7.12.35-PM.jpeg"
+                                    alt="News Image" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    বিদ্যুৎ বিল বাড়ার প্রতিবাদে রাজধানীতে বিক্ষোভ
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>৩০ মিনিট আগে</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex pb-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <div class="rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-08-02%2Fprhvjfrt%2FDMP-1.jpg"
+                                    alt="News Image" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    নতুন শিক্ষাক্রমের বই বিতরণে প্রস্তুতি সম্পন্ন
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>১ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <div class="rounded-lg w-16 h-16 flex-shrink-0 overflow-hidden">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2023-12%2F8db67bca-e852-4034-b1ec-44573796741b%2Fad4a153e-f920-4c2f-9879-f09583c8e0bd.webp"
+                                    alt="News Image" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    বাজেট ঘাটতির জন্য নতুন করের প্রস্তাব
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>২ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- জনপ্রিয় সংবাদ (Popular News) -->
+                <div class="glass rounded-2xl shadow-lg p-6 mb-6">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        জনপ্রিয় সংবাদ
+                    </h2>
+                    <ul class="space-y-4">
+                        <li
+                            class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl p-3 transition-all">
+                            <span
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-brand text-white text-sm font-bold group-hover:scale-110 transition-transform">
+                                ১
+                            </span>
+                            <a href="#"
+                                class="text-sm font-medium group-hover:text-brand transition-colors leading-tight">
+                                কক্সবাজারে রেকর্ড সংখ্যক পর্যটক, হোটেলগুলোতে ভরপুর বুকিং
+                            </a>
+                        </li>
+
+                        <li
+                            class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl p-3 transition-all">
+                            <span
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-accent text-white text-sm font-bold group-hover:scale-110 transition-transform">
+                                ২
+                            </span>
+                            <a href="#"
+                                class="text-sm font-medium group-hover:text-brand transition-colors leading-tight">
+                                সরকারি চাকরিতে প্রবেশের বয়সসীমা ৩৫ করার দাবি
+                            </a>
+                        </li>
+
+                        <li
+                            class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl p-3 transition-all">
+                            <span
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-bold group-hover:scale-110 transition-transform">
+                                ৩
+                            </span>
+                            <a href="#"
+                                class="text-sm font-medium group-hover:text-brand transition-colors leading-tight">
+                                মোবাইল ব্যাংকিংয়ে নতুন সীমা নির্ধারণ, প্রতিদিন সর্বোচ্চ ৫০ হাজার
+                            </a>
+                        </li>
+
+                        <li
+                            class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl p-3 transition-all">
+                            <span
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-purple-500 text-white text-sm font-bold group-hover:scale-110 transition-transform">
+                                ৪
+                            </span>
+                            <a href="#"
+                                class="text-sm font-medium group-hover:text-brand transition-colors leading-tight">
+                                রাজধানীতে নতুন আবাসন প্রকল্পের উদ্বোধন করলেন প্রধানমন্ত্রী
+                            </a>
+                        </li>
+
+                        <li
+                            class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl p-3 transition-all">
+                            <span
+                                class="w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white text-sm font-bold group-hover:scale-110 transition-transform">
+                                ৫
+                            </span>
+                            <a href="#"
+                                class="text-sm font-medium group-hover:text-brand transition-colors leading-tight">
+                                ই-কমার্স নিয়ে নতুন নীতিমালা জারি, গ্রাহক সুরক্ষা নিশ্চিত
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Opinion Section -->
+                <div class="glass rounded-2xl shadow-lg p-6 mb-6">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        মতামত
+                    </h2>
+                    <div class="space-y-6">
+                        <div
+                            class="hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-3 transition-all cursor-pointer">
+                            <h3 class="text-2xl mb-2 hover:text-brand transition-colors">
+                                রাজনৈতিক স্থিতিশীলতার গুরুত্ব
+                            </h3>
+                            <div class="flex items-center mb-3">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-07-26%2Flub6a6hk%2FWhatsApp-Image-2025-07-23-at-9.50.00-PM-1.jpeg"
+                                    alt="ডঃ মাহমুদ হাসান" class="w-8 h-8 rounded-full mr-3 object-cover" />
+                                <p class="text-sm text-gray-600 dark:text-gray-300">
+                                    ড. মাহমুদ হাসান, রাজনৈতিক বিশ্লেষক
+                                </p>
+                            </div>
+                            <p class="text-sm leading-relaxed">
+                                দেশের অর্থনৈতিক উন্নয়নের জন্য রাজনৈতিক স্থিতিশীলতা অপরিহার্য।
+                                সাম্প্রতিক সময়ে রাজনৈতিক অস্থিরতা দেশের অগ্রগতিতে বাধা সৃষ্টি
+                                করছে...
+                            </p>
+                        </div>
+
+                        <div
+                            class="pt-4 border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-3 transition-all cursor-pointer">
+                            <h3 class="text-2xl mb-2 hover:text-brand transition-colors">
+                                শিক্ষা ব্যবস্থায় সংস্কারের প্রয়োজনীয়তা
+                            </h3>
+                            <div class="flex items-center mb-3">
+                                <img src="https://media.prothomalo.com/prothomalo-bangla%2F2025-06-26%2Fouay8n4w%2FHoroscopeThumbChinmoy-Barua.jpg"
+                                    alt="প্রফেসর সেলিনা আক্তার" class="w-8 h-8 rounded-full mr-3 object-cover" />
+                                <p class="text-sm text-gray-600 dark:text-gray-300">
+                                    প্রফেসর সেলিনা আক্তার, শিক্ষাবিদ
+                                </p>
+                            </div>
+                            <p class="text-sm leading-relaxed">
+                                চতুর্থ শিল্প বিপ্লবের এই যুগে আমাদের শিক্ষা ব্যবস্থাকে
+                                সময়োপযোগী করতে হবে। মুখস্থ নির্ভরতা কমিয়ে ব্যবহারিক শিক্ষার
+                                উপর জোর দিতে হবে...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Entertainment Section -->
+                <div class="glass rounded-2xl shadow-lg p-6 mb-6">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        বিনোদন
+                    </h2>
+                    <div class="space-y-4">
+                        <div
+                            class="flex hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                                alt="Entertainment" class="w-16 h-16 object-cover rounded-lg" />
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    ঈদের জন্য তৈরি হচ্ছে ১২টি নতুন চলচ্চিত্র
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>৪ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex pt-4 border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1পৃষ্ঠাfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                                alt="Entertainment" class="w-16 h-16 object-cover rounded-lg" />
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    ঢাকায় আসছেন বিশ্বখ্যাত সংগীতশিল্পী জন লিজেন্ড
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>৬ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex pt-4 border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg p-2 transition-all cursor-pointer">
+                            <img src="https://media.prothomalo.com/prothomalo-bangla%2F2023-11%2F4c99c9ba-6f4d-407c-aefa-6bba07b79698%2FKPYQQKO6KRLFRDLIFPLB3IFJBA.jpg"
+                                alt="Entertainment" class="w-16 h-16 object-cover rounded-lg" />
+                            <div class="ml-3">
+                                <h3 class="font-semibold text-sm leading-tight hover:text-brand transition-colors">
+                                    টেলিভিশন নাটকে নতুন জুটি রিয়াজ-মৌসুমী
+                                </h3>
+                                <div class="flex items-center text-xs text-gray-500 mt-2">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>৮ ঘন্টা আগে</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Weather Section -->
+                <div
+                    class="glass rounded-2xl shadow-lg p-6 mb-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        আবহাওয়া
+                    </h2>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-cloud-sun weather-icon text-5xl text-blue-400 mr-4"></i>
+                            <div class="text-center">
+                                <p
+                                    class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                                    ২৯°C
+                                </p>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                                    ঢাকা
+                                </p>
+                                <p class="text-sm text-gray-500">আংশিক মেঘলা</p>
+                            </div>
+                        </div>
+
+                        <div class="w-full bg-white/50 dark:bg-gray-800/50 rounded-xl p-4 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span>আর্দ্রতা: <strong>৬৫%</strong></span>
+                                <span>বাতাস: <strong>১২ কিমি/ঘ</strong></span>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                            আংশিক মেঘলা আকাশ, রাতের তাপমাত্রা ২৪°C পর্যন্ত নামতে পারে। হালকা
+                            বৃষ্টির সম্ভাবনা রয়েছে।
+                        </p>
+
+                        <div class="grid grid-cols-3 gap-4 w-full">
+                            <div
+                                class="text-center bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 hover:bg-white/70 dark:hover:bg-gray-700/50 transition-all">
+                                <p class="text-xs font-medium text-gray-600 dark:text-gray-400">
+                                    শনিবার
+                                </p>
+                                <i class="fas fa-sun text-yellow-400 text-2xl my-2"></i>
+                                <p class="font-bold text-lg">৩২°</p>
+                            </div>
+                            <div
+                                class="text-center bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 hover:bg-white/70 dark:hover:bg-gray-700/50 transition-all">
+                                <p class="text-xs font-medium text-gray-600 dark:text-gray-400">
+                                    রবিবার
+                                </p>
+                                <i class="fas fa-cloud-rain text-blue-400 text-2xl my-2"></i>
+                                <p class="font-bold text-lg">২৮°</p>
+                            </div>
+                            <div
+                                class="text-center bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 hover:bg-white/70 dark:hover:bg-gray-700/50 transition-all">
+                                <p class="text-xs font-medium text-gray-600 dark:text-gray-400">
+                                    সোমবার
+                                </p>
+                                <i class="fas fa-cloud text-gray-400 text-2xl my-2"></i>
+                                <p class="font-bold text-lg">৩০°</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <!-- <div class="glass rounded-2xl shadow-lg p-6">
+                    <h2 class="text-lg font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        দ্রুত লিংক
+                    </h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-brand hover:text-white transition-all group">
+                            <i class="fas fa-newspaper mr-2 group-hover:animate-bounce"></i>
+                            <span class="text-sm font-medium">ই-পেপার</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-brand hover:text-white transition-all group">
+                            <i class="fas fa-rss mr-2 group-hover:animate-pulse"></i>
+                            <span class="text-sm font-medium">RSS ফিড</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-brand hover:text-white transition-all group">
+                            <i class="fas fa-mobile-alt mr-2 group-hover:animate-bounce"></i>
+                            <span class="text-sm font-medium">অ্যাপ ডাউনলোড</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-brand hover:text-white transition-all group">
+                            <i class="fas fa-archive mr-2 group-hover:animate-pulse"></i>
+                            <span class="text-sm font-medium">আর্কাইভ</span>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r width-100 from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-brand to-accent bg-clip-text text-transparent">
+                        আমার সংবাদ
+                    </h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        অবিচল সত্যের খোদা, সত্য ও ন্যায়ের পক্ষে। আমরা প্রতিদিন নিরপেক্ষ ও
+                        বিশ্বস্ত সংবাদ পরিবেশন করে থাকি।
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-sm">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon text-sm">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon text-sm">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon text-sm">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">ক্যাটাগরি</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">জাতীয়</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">রাজনীতি</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">খেলা</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">বাণিজ্য</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">বিনোদন</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">আন্তর্জাতিক</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">গুরুত্বপূর্ণ লিংক</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">আমাদের সম্পর্কে</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">যোগাযোগ</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">গোপনীয়তা নীতি</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">ক্যারিয়ার</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">বিজ্ঞাপন</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-brand transition-colors">সহায়তা</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">নিউজলেটার</h4>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                        সর্বশেষ খবর ও আপডেট পেতে আমাদের নিউজলেটার সাবস্ক্রাইব করুন
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="আপনার ইমেইল"
+                            class="flex-1 px-4 py-3 rounded-l-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand" />
+                        <button
+                            class="bg-gradient-to-r from-brand to-accent hover:from-brandDark hover:to-accentDark px-6 py-3 rounded-r-lg transition-all">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © ২০২৫ আমার সংবাদ - সর্বস্বত্ব সংরক্ষিত | ডিজাইন ও ডেভেলপমেন্ট:
+                        <a href="#" class="font-bold hover:text-brand text-sm transition-colors">কেহেম আইটি</a>
+                    </p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-brand text-sm transition-colors">শর্তাবলী</a>
+                        <a href="#" class="text-gray-400 hover:text-brand text-sm transition-colors">কুকি নীতি</a>
+                        <a href="#" class="text-gray-400 hover:text-brand text-sm transition-colors">সাইটম্যাপ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Theme Toggle with Animation
+        document
+            .getElementById("themeToggle")
+            .addEventListener("click", function () {
+                document.documentElement.classList.toggle("dark");
+                const isDark = document.documentElement.classList.contains("dark");
+                localStorage.setItem("theme", isDark ? "dark" : "light");
+
+                // Add rotation animation
+                this.style.transform = "rotate(360deg)";
+                setTimeout(() => {
+                    this.style.transform = "rotate(0deg)";
+                }, 300);
+            });
+
+        // Load theme from localStorage
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+        }
+
+        // Enhanced Desktop Dropdown Toggle
+        document.querySelectorAll(".dropdown > a").forEach((dropdownToggle) => {
+            dropdownToggle.addEventListener("click", function (e) {
+                e.preventDefault();
+                const dropdownMenu = this.nextElementSibling;
+                const chevronIcon = this.querySelector(".fa-chevron-down");
+
+                // Close all other open dropdowns
+                document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+                    if (menu !== dropdownMenu) {
+                        menu.classList.add("hidden");
+                    }
+                });
+
+                // Remove rotation from all other chevrons
+                document
+                    .querySelectorAll(".dropdown > a .fa-chevron-down")
+                    .forEach((icon) => {
+                        if (icon !== chevronIcon) {
+                            icon.classList.remove("chevron-rotate");
+                        }
+                    });
+
+                // Toggle this dropdown and chevron with animation
+                dropdownMenu.classList.toggle("hidden");
+                chevronIcon.classList.toggle("chevron-rotate");
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", function (e) {
+            const isClickInsideDropdown = e.target.closest(".dropdown");
+            if (!isClickInsideDropdown) {
+                document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+                    menu.classList.add("hidden");
+                });
+                document
+                    .querySelectorAll(".dropdown > a .fa-chevron-down")
+                    .forEach((icon) => {
+                        icon.classList.remove("chevron-rotate");
+                    });
+            }
+        });
+
+        // Enhanced Mobile Menu Toggle
+        document
+            .getElementById("mobileMenuBtn")
+            .addEventListener("click", function () {
+                const mobileMenu = document.getElementById("mobileMenu");
+                mobileMenu.classList.toggle("hidden");
+
+                // Animate hamburger icon
+                const icon = this.querySelector("i");
+                if (mobileMenu.classList.contains("hidden")) {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                } else {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+                }
+            });
+
+        // Enhanced Mobile Dropdown Toggle
+        document.querySelectorAll(".dropdown-mobile > a").forEach((item) => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                const menu = this.nextElementSibling;
+                const chevron = this.querySelector(".fa-chevron-down");
+
+                menu.classList.toggle("hidden");
+                chevron.classList.toggle("chevron-rotate");
+            });
+        });
+
+        // Enhanced Carousel Functionality
+        function initCarousel(
+            containerSelector,
+            slideSelector,
+            indicatorSelector,
+            prevBtnSelector,
+            nextBtnSelector,
+            autoplayInterval = 5000
+        ) {
+            const container = document.querySelector(containerSelector);
+            const slides = document.querySelectorAll(slideSelector);
+            const indicators = document.querySelectorAll(indicatorSelector);
+            const prevBtn = document.querySelector(prevBtnSelector);
+            const nextBtn = document.querySelector(nextBtnSelector);
+
+            if (!container || !slides.length) return;
+
+            let currentIndex = 0;
+            let carouselInterval;
+
+            function updateCarousel() {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle("opacity-50", index !== currentIndex);
+                    indicator.classList.toggle("bg-white", index === currentIndex);
+                    indicator.classList.toggle("opacity-100", index === currentIndex);
+                });
+            }
+
+            function startCarousel() {
+                carouselInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }, autoplayInterval);
+            }
+
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener("click", () => {
+                    stopCarousel();
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                    startCarousel();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener("click", () => {
+                    stopCarousel();
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                    startCarousel();
+                });
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener("click", () => {
+                    stopCarousel();
+                    currentIndex = index;
+                    updateCarousel();
+                    startCarousel();
+                });
+            });
+
+            // Pause on hover
+            container.addEventListener("mouseenter", stopCarousel);
+            container.addEventListener("mouseleave", startCarousel);
+
+            startCarousel();
+        }
+
+        // Initialize all carousels
+        initCarousel(
+            ".carousel-container",
+            ".carousel-slide",
+            ".carousel-indicator",
+            ".carousel-prev",
+            ".carousel-next",
+            5000
+        );
+        initCarousel(
+            ".sports-carousel-container",
+            ".sports-carousel-slide",
+            ".sports-carousel-indicator",
+            null,
+            null,
+            6000
+        );
+        initCarousel(
+            ".picture-carousel-container",
+            ".picture-carousel-slide",
+            ".picture-carousel-indicator",
+            null,
+            null,
+            6000
+        );
+
+        // Enhanced Tab Switching
+        const tabData = {
+            পঠিত: [
+                {
+                    img: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "বাংলাদেশে রেকর্ড পরিমাণ বিদেশি বিনিয়োগ",
+                    time: "৩ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "নতুন মেট্রোরেল স্টেশনের উদ্বোধন আজ",
+                    time: "৫ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "গ্রামীণ এলাকায় ইন্টারনেট সেবার সম্প্রসারণ",
+                    time: "৮ ঘন্টা আগে",
+                },
+            ],
+            আলোচিত: [
+                {
+                    img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "সামাজিক মাধ্যমে ভাইরাল নতুন গান",
+                    time: "২ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "জলবায়ু পরিবর্তন নিয়ে তরুণদের আন্দোলন",
+                    time: "৪ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "ঢাকায় ফুড ফেস্টিভাল শুরু",
+                    time: "৬ ঘন্টা আগে",
+                },
+            ],
+
+
+            সুখবর: [
+                {
+                    img: "https://media.prothomalo.com/prothomalo-bangla%2F2025-07-31%2Fdqz2sp8p%2Fweb.jpg",
+                    title: "নতুন পার্ক উদ্বোধন ঢাকায়",
+                    time: "১ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "কক্সবাজারে পরিচ্ছন্নতা অভিযান সফল",
+                    time: "৩ ঘন্টা আগে",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+                    title: "গ্রামীণ শিক্ষার্থীদের বিনামূল্যে বই বিতরণ",
+                    time: "৫ ঘন্টা আগে",
+                },
+            ],
+        };
+
+        function updateTabContent(tabName) {
+            const tabContent = document.getElementById("tabContent");
+            if (!tabContent) return;
+
+            // Add loading animation
+            tabContent.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
+            setTimeout(() => {
+                tabContent.innerHTML = tabData[tabName]
+                    .map(
+                        (item, index) => `
+            <div class="flex animate-fadeIn" style="animation-delay: ${index * 0.1
+                            }s">
+                <img src="${item.img
+                            }" alt="News" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                <div class="ml-3">
+                    <h3 class="font-semibold mb-2 hover:text-brand transition-colors cursor-pointer leading-tight">${item.title
+                            }</h3>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <i class="far fa-clock mr-1"></i>
+                        <span>${item.time}</span>
+                    </div>
+                </div>
+            </div>
+        `
+                    )
+                    .join("");
+            }, 300);
+        }
+
+        // Enhanced tab switching with animations
+        document.querySelectorAll(".tab-active, .tab-inactive").forEach((tab) => {
+            tab.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                // Remove active class from all tabs
+                document
+                    .querySelectorAll(".tab-active, .tab-inactive")
+                    .forEach((t) => {
+                        t.classList.remove("tab-active");
+                        t.classList.add("tab-inactive");
+                    });
+
+                // Add active class to clicked tab
+                tab.classList.remove("tab-inactive");
+                tab.classList.add("tab-active");
+
+                updateTabContent(tab.textContent.trim());
+            });
+        });
+
+        // Initialize with first tab
+        updateTabContent("পঠিত");
+
+        // Scroll to Top Functionality
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add("visible");
+            } else {
+                scrollToTopBtn.classList.remove("visible");
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+
+        // Lazy Loading for Images
+        const images = document.querySelectorAll("img");
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add("animate-fadeIn");
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach((img) => imageObserver.observe(img));
+
+        // Dynamic Time Updates
+        function updateTimeStamps() {
+            const timeElements = document.querySelectorAll('[class*="আগে"]');
+            // This would typically connect to a real-time service
+            // For demo purposes, we'll just add a subtle animation
+            timeElements.forEach((el) => {
+                el.addEventListener("mouseenter", () => {
+                    el.style.transform = "scale(1.05)";
+                });
+                el.addEventListener("mouseleave", () => {
+                    el.style.transform = "scale(1)";
+                });
+            });
+        }
+
+        updateTimeStamps();
+
+        // Search Enhancement
+        const searchInput = document.querySelector(
+            'input[placeholder="খুঁজুন..."]'
+        );
+        if (searchInput) {
+            searchInput.addEventListener("focus", function () {
+                this.parentElement.classList.add("ring-2", "ring-brand");
+            });
+
+            searchInput.addEventListener("blur", function () {
+                this.parentElement.classList.remove("ring-2", "ring-brand");
+            });
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+
+        // Performance: Preload critical images
+        const criticalImages = [
+            "https://images.unsplash.com/photo-1594819047050-99defca2d0ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1591262181622-433df71b1a9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        ];
+
+        criticalImages.forEach((src) => {
+            const link = document.createElement("link");
+            link.rel = "preload";
+            link.as = "image";
+            link.href = src;
+            document.head.appendChild(link);
+        });
+
+        console.log(
+            "🎉 আমার সংবাদ - Enhanced Bengali News Website Loaded Successfully!"
+        );
+    </script>
+</body>
+
+</html>
